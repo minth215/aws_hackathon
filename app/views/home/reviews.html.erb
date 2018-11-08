@@ -1,0 +1,8 @@
+<div align='center'>
+  <% @reviews.each do |p| %>
+    <article class="review-card col-12 <%= 'senior-card' if p.user.position == "senior" %>" align='left'>
+      <p class="post-nickname"><%= p.user.nickname %> > <span><%=p.post.user.nickname%>(<%=link_to p.post.title, post_path(p.post.id)%>)</span></p>
+      <p><%=p.content %></p>
+    </article>
+  <% end %>
+</div>

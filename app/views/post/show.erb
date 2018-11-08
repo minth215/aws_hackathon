@@ -1,0 +1,39 @@
+<section class="container">
+  <h2 class="post-title"><%= @post.title %></h2>
+  <p class="post-category"><%= @post.category.content %></p>
+  <p class="post-nickname"><%= @post.user.nickname %> 님</p>
+  <div class="post-content">
+    <p><%= @post.content %></p>
+    <%= image_tag "#{@post.image.url}", class: "post-image" %>
+    <!--<img src="<%#= @post.image.url %>">-->
+  </div>
+  <% unless current_user == @post.user %>
+    <% if not current_user.pending_friends.include?(@post.user) %>  
+      <%= form_tag(match_m_request_path, method: "post") do %>
+        <%= hidden_field_tag(:user_id, @post.user.id) %>
+        <%= submit_tag "Matching", class: "matching-btn" %>
+      <% end %>
+    <% else %>
+      <%= button_tag "Waiting", class: "waiting-btn", disabled: true %>
+    <% end %>
+    <% if current_user.is_like?(@post) %>
+      <%= link_to("좋아요 취소",like_post_path(@post), method: "get") %>
+    <%else%>
+      <%= link_to("좋아요",like_post_path(@post), method: "get")%>
+    <% end %>
+  <% end %>
+  
+  <% if current_user.friends_with?(@post.user)%>
+    <%= form_for @review, url: post_review_index_path(@post) do |f| %>
+      <%=f.hidden_field :user_id, value: "#{current_user.id}" %>
+      <%=f.hidden_field :post_id, value: "#{@post.id}" %>
+      <%= f.text_area :content, class: "review-input" %>
+      <%= f.submit "Write", class: "review-btn" %>
+    <% end %>
+  <%end%>
+  
+  <% @post.reviews.each do |r|%>
+    <%= r.content %><br>
+  <% end %>
+
+</section>

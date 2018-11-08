@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <ul class="" style="margin-bottom: 0.5rem;">
+    <li class="mypost"><%=link_to '내가 쓴 글', mypage_mypost_path, class: "#{'current-nav' if current_page?(mypage_mypost_path)}"%></li>
+    <li class="mylike"><%=link_to '찜한 글', mypage_mylike_path, class: "#{'current-nav' if current_page?(mypage_mylike_path)}"%></li>
+    <li class="manage_users"><%=link_to '매칭요청관리', mypage_manage_users_path, class: "#{'current-nav' if current_page?(mypage_manage_users_path)}"%></li>
+    <li class="matched_users"><%=link_to '매칭된 유저',mypage_matched_users_path, class: "#{'current-nav' if current_page?(mypage_matched_users_path)}"%></li>
+  </ul>
+</nav>
+
+<!--<script>-->
+<!--  var flag = window.location.href.split('mypage/')[1];-->
+<!--  $(function(){-->
+<!--    $(flag).addClass('.current-nav');-->
+<!--  });-->
+<!--</script>-->

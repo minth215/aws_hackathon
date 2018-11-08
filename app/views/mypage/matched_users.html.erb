@@ -1,0 +1,14 @@
+<div class='container'>
+  <%= render partial: "mypage/menubar" %>
+  <hr>
+  <div class='mt-30'></div>
+  <div align='center'>
+    <% @friends.each do |f| %>
+      <article class="review-card col-12 <%= 'senior-card' if f.position == "senior" %>" align='left'>
+        <p></p>
+        <p><%=f.nickname %></p>
+        <h5><%=f.position %></h5>
+      </article>
+    <% end %>
+  </div>
+</div>

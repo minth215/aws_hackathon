@@ -1,0 +1,68 @@
+// Place all the styles related to the post controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// show
+.post-title {
+  display: inline;
+  font-weight: 900;
+  color: rgb(80,80,80);
+  font-size: 2rem;
+}
+
+.post-category {
+  display: inline;
+  border-radius: 10px;
+  color: white;
+  font-size: .8rem;
+  background: rgb(156,207,255);
+  padding: 5px;
+}
+
+.senior {
+  background: rgb(255,156,173);
+}
+
+.post-nickname {
+  font-size: .9rem;
+}
+
+.post-content {
+  background: #eff2f7;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.post-image {
+  width: 50%;
+}
+
+.matching-btn {
+  border: 1px solid rgb(108,199,232);
+  border-radius: 6px;
+  background: rgb(181,235,255);
+  color: rgb(100,100,100);
+  width: 80px;
+  height: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 10px;
+}
+
+.matching-btn:hover {
+  background: rgb(108,199,232);
+  color: white;
+}
+
+.waiting-btn {
+  border: 1px solid rgb(200,200,200);
+  border-radius: 6px;
+  background: rgb(200,200,200);
+  color: white;
+  width: 80px;
+  height: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 10px;
+}

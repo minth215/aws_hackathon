@@ -1,0 +1,5 @@
+<div class="container post-form-section">
+  <%= form_for @post, url: {action: "create"}, enctype: 'multipart/form-data' do |f| %>
+    <%= render partial: "post/post_form", locals: { f: f, c: @categories } %>
+  <% end %>
+</div>

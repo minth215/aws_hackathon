@@ -1,0 +1,22 @@
+<div class="posts-container">
+  <i class="fas fa-edit">
+  <a href="/post/new" class="btn btn-secondary" role="button" aria-pressed="true">글쓰기</a></i><br>
+  <section class="row post-section">
+    <% @posts.each do |p| %>
+      <article class="post-card col-12 col-md-3 <%= 'senior-card' if p.user.position == "senior" %>">
+        <h2><%= link_to p.title, post_path(p.id), class: "post-title" %></h2>
+        <p><%#= p.category.content %></p>
+        <p class="post-nickname"><%= p.user.nickname %></p>
+        <%if user_signed_in? %>
+          <%= link_to like_post_path(p), method: "get" do %>
+            <% if current_user.is_like?(p) %>
+              <i class="fas fa-heart"></i> <%= p.likes.size %>
+            <% else %>
+              <i class="far fa-heart"></i> <%= p.likes.size %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </article>
+    <% end %>
+  </section>
+</div>

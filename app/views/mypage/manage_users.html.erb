@@ -1,0 +1,43 @@
+<div class="container">
+  <%= render partial: "mypage/menubar" %>
+  <hr>
+  <div class='mt-30'></div>
+  <div class='row'>
+    <div class='mf-1'>
+      <h2 class='gray'>매칭 요청</h2>
+      <div class="f-card">
+        <%@requested_friends.each do |f|%>
+          <p><%=f.nickname%></p>
+          <div class="flex-right">
+            <%=form_tag(match_m_accept_path, method: "post", class: 'inline-block mr-10') do%>
+              <%= hidden_field_tag(:user_id, f.id) %>
+              <%= submit_tag("수락하기", class: 'matching-btn inline-block') %>
+            <%end%>
+            <%=form_tag(match_m_decline_path, method: "post", class: 'inline-block') do%>
+              <%= hidden_field_tag(:user_id, f.id) %>
+              <%= submit_tag("거절하기", class: 'matching-btn inline-block') %>
+            <%end%>
+          </div>  
+        <%end%>
+      </div>
+    </div>  
+    
+    <div class='mf-2'>
+      <h2 class='gray'>매칭 대기</h2>
+      
+      <%@pending_friends.each do |f|%>
+        <div class="f-card">
+          <%=f.nickname%><br>
+        </div>
+      <%end%>
+    </div>  
+    
+  </div>
+  
+</div>
+
+
+
+
+
+

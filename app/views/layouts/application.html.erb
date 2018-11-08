@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AWS Hackathon</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js" ></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header id="gnb">
+    <h1 id="branding">
+      <a href="/"><%= image_tag "logo.png", width: "250" %></a>
+      <!--<a href="/"><%#= image_tag "logo2.png", width: "100" %></a>-->
+      <!--<div class="branding-bg"></div>-->
+    </h1>
+    <nav class="navbar">
+      <ul class="<%#= 'white-ul' if current_page?(root_path) %>">
+        <li><%= link_to "세상보기", home_list_path, class: "#{'current-nav' if current_page?(home_list_path)}" %></li>
+        <li><%= link_to "세상후기", home_reviews_path, class: "#{'current-nav' if current_page?(home_reviews_path)}" %></li>  
+        <% if user_signed_in? %>
+          <li><strong><%= current_user.nickname %></strong> 님</li>
+          <li><%= link_to "마이 페이지", mypage_mypost_path, class: "#{'current-nav' if current_page?(mypage_mypost_path)}" %></li>
+          <li><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: {confirm: "로그아웃하시겠습니까?"}, class: "btn-logout" %></li>
+        <% else %>
+          <li><%= link_to "로그인", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+  <%= yield %>
+  <footer>
+    <p>©GirlsOnTop IT, All Rights Reserved. 2018.11.03.</p>
+  </footer>
+</body>
+</html>

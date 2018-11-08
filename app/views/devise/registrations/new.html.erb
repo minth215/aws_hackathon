@@ -1,0 +1,61 @@
+<section class="devise-section">
+  <div class="devise-content">
+    <h2 class="devise-title center">Sign up</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+    
+        <%= f.label :email %><br />
+        <%= f.email_field :email, class: "devise-input", autofocus: true, autocomplete: "email" %>
+    
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, class: "devise-input", autocomplete: "new-password" %>
+      
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, class: "devise-input", autocomplete: "new-password" %>
+      
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "devise-input" %>
+      
+        <%= f.label :nickname %>
+        <%= f.text_field :nickname, class: "devise-input" %>
+        
+        <%= f.label :age %>
+        <%= f.number_field :age, class: "devise-input" %>
+        
+        <%= label_tag(:sex_female, "Female") %>
+        <%= radio_button_tag(:sex, "female") %>
+        <%= label_tag(:sex_male, "Male") %>
+        <%= radio_button_tag(:sex, "male") %><br />
+        
+        <%= f.label :career %>
+        <%= f.number_field :career, class: "devise-input" %>
+        
+        <%= f.label :position %>
+        <%=f.text_field :position, class: "devise-input", value: '' %>
+      
+    <div class="actions">
+      <p class="center"><%= f.submit "Sign up", class: "devise-btn" %></p>
+    </div>
+
+    <% end %>
+  </div>
+</section>
+
+<script>
+  $(function(){
+    var career = $('#user_career');
+    var position = $('#user_position');
+    career.blur(function(){
+      var num = career.val();
+      
+      if (num >= 1 && num < 8) {
+        position.val('Junior');
+      }else if (num >=8) {
+        position.val('Senior');
+      }
+    });
+  });
+</script>

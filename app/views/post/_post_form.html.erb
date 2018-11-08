@@ -1,0 +1,15 @@
+<form>
+  <div class="form-group">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <label for="exampleFormControlInput1">Title</label><br>
+      <%= f.text_field :title, class: "form-control", id: "exampleFormControlInput1", style: "width: 50%", autocomplete: false %><br><br>
+    <label for="exampleFormControlTextarea1">Content</label><br>
+      <%= f.text_area :content, class: "form-control", id:"exampleFormControlTextarea1", rows: "10", style: "width: 50%", autocomplete: false %><br>
+    <%= f.file_field :image, class: "post-file" %><br><br>
+    <%= f.select(:category_id, 
+      c.collect {|p| [ p.content, p.id] }) %>
+    <%=f.hidden_field :user_id, value: "#{current_user.id}" %>
+    <%#= f.select(:post, :category, [['Lisbon', 1], ['Madrid', 2], ...]) %>
+    <%= f.submit "SUBMIT", class: "btn btn-secondary" %>
+  </div>
+</form>
